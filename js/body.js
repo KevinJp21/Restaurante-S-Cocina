@@ -140,7 +140,7 @@ const modal_content = body.menu.map(modal=>{
 
           <div class="modal-body">
             <h3 class="fs-3">Selecciona el producto y personaliza tu pedido:</h3>
-            <label class="fs-4" for="product">Tipo de Bebida:</label>
+            <label class="fs-4" for="product">Acompañar con:</label>
             <select id="product" class="fs-4 form-select mb-3">
               <option class="fs-4" value="soda">Gaseosa: $2.500</option>
               <option class="fs-4" value="juice">Jugo: $2.000</option>
