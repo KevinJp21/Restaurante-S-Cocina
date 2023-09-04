@@ -149,12 +149,6 @@ html ::-webkit-scrollbar{
     color: #006eff;
 }
 
-
-
-.card-container .card{
-
-}
-
 #about .card{
     border-radius: 10px;
 }
