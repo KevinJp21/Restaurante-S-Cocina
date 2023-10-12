@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 62.5%; 
-    font-family: 'Mulish',sans-serif;
 }
 
 html{
@@ -265,7 +264,7 @@ html ::-webkit-scrollbar{
     transform: translateY(-10px );
 }
 
-/*menu*/
+/*menu star*/
 #menu{
     width: 100%;
     margin-top: 60px;
@@ -345,82 +344,6 @@ html ::-webkit-scrollbar{
 
 .rows{
     margin-top: 30px;
-}
-
-.products-preview{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-height: 100vh;
-    width: 100%;
-    background: rgba(0, 0, 0, .8);
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.preview{
-    display: none;
-    padding: 2rem;
-    text-align: center;
-    background: #fff;
-    margin: 2rem;
-    width: 40rem;
-    overflow: hidden;
-}
-
-.preview img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.products-preview .preview.active{
-    display: inline-block;
-}
-
-.btn-modal{
-    font-family: 'Mulish', sans-serif;
-    width: 150px;
-    height: 36px;
-    margin-top: 20px;
-    background: #006eff;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    border: none;
-    transition: .5s ease;
-    cursor: pointer;
-}
-
-.btn-modal:hover{
-    background:red ;
-}
-
-.buttons{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.preview p{
-    color: #006eff;
-    
-}
-
-.preview .price {
-    padding: 1rem 0;
-    color: #006eff;
-}
-
-.stars{
-    padding: 1rem 0;
-}
-
-.stars i{
-    color: #006eff;
 }
 
 /*Contact*/
@@ -515,7 +438,23 @@ html ::-webkit-scrollbar{
     }
 }
 
+.btn-modal{
+    font-family: 'Mulish', sans-serif;
+    width: 150px;
+    height: 36px;
+    margin-top: 20px;
+    background: #006eff;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    transition: .5s ease;
+    cursor: pointer;
+}
 
+.btn-modal:hover{
+    background:red ;
+}
 /*footer*/
 
 

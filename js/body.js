@@ -95,8 +95,16 @@ const food = body.menu.map(menu=>{
       <img class="img-lg" src="${menu.img}" alt="pollo">
 
       <div class="card-body">
+        <div class="star text-center">
+          <i class="fa-regular fa-star fs-2"></i>
+          <i class="fa-regular fa-star fs-2"></i>
+          <i class="fa-regular fa-star fs-2"></i>
+          <i class="fa-regular fa-star fs-2"></i>
+          <i class="fa-regular fa-star fs-2"></i>
+        </div>
+
         <h3 class="fs-2">${menu.name}</h3>
-        <p class="fs-2 price"> ${menu.price} <span class="fs-1 fa-solid fa-basket-shopping btn-basket" data-name=${menu.data_name}></span></p>
+        <p class="fs-2"> ${menu.price} <span class="fs-1 fa-solid fa-basket-shopping" data-bs-toggle="modal" data-bs-target="${menu.modal_id}"></span></p>
       </div>
 
     </div>
@@ -104,32 +112,6 @@ const food = body.menu.map(menu=>{
 
     `
 });
-
-/*Product Preview */
-const preview = body.menu.map((menu, index)=>{
-  const isActive = index === 0 ? '  active' : '';
-  return `
-    <div class="preview" data-target="${menu.data_name}">
-    <img class="img-lg" src="${menu.img}" alt="pollo">
-    <h3 class="fs-1">${menu.name}</h3>
-    <div class="stars">
-      <i class="fs-3 fas fa-star"></i>
-      <i class="fs-3 fas fa-star"></i>
-      <i class="fs-3 fas fa-star"></i>
-      <i class="fs-3 fas fa-star"></i>
-      <i class="fs-3 fas fa-star-half-alt"></i>
-    </div>
-      <p class="fs-4">lorem ipsum dolor sit amet consectetur.
-      <div class="fs-2 price">${menu.price}</div>
-      <div class="buttons">
-          <button class="fs-2 btn-modal">Cerrar</button>
-          <button class="fs-2 btn-modal">Comprar</button>
-      </div>
-    </div>
-    `
-});
-
-document.querySelector('.products-preview').innerHTML=preview.join('')
 
 /*Crea una nueva fila cada 4 cards*/
 const rowContainer = document.querySelector('#container2');
@@ -143,6 +125,128 @@ food.forEach((menu, index) => {
   const currentRow = rowContainer.lastChild;
   currentRow.innerHTML += menu;
 });
+
+/*Modal window*/
+const modal_content = body.menu.map(modal=>{
+    return `
+    
+    <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-2" id="exampleModalLabel">Pedido</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <h3 class="fs-3">Selecciona el producto y personaliza tu pedido:</h3>
+            <label class="fs-4" for="product">Acompañar con:</label>
+            <select id="product" class="fs-4 form-select mb-3">
+              <option class="fs-4" value="soda">Gaseosa: $2.500</option>
+              <option class="fs-4" value="juice">Jugo: $2.000</option>
+              <option class="fs-4" value="soup">Sopa: $5.000</option>
+            </select>
+    
+            <label class="fs-4" for="variant">Tipo de Gaseosa:</label>
+            <select   id="soda" class="fs-4 form-select mb-3" >
+              <option class="fs-4" value="soda1">Manzana</option>
+              <option class="fs-4" value="soda2">Coca_cola</option>
+              <option class="fs-4" value="soda3">Sprite</option>
+            </select>
+            
+
+            <label class="fs-4" for="drink">Tipo de Jugo:</label>
+            <select id="type_juice" class="fs-4 form-select mb-3" disabled>
+              <option class="fs-4" value="maracuya">Maracuyá</option>
+              <option class="fs-4" value="fresa">Fresa</option>
+              <option class="fs-4" value="fresa">Mora</option>
+            </select>
+
+            <label class="fs-4" for="preparation">Tipo de Preparacion:</label>
+            <select id="juice" class="fs-4 form-select mb-3" disabled>
+              <option class="fs-4" value="jugoAgua">Agua</option>
+              <option class="fs-4" value="jugoLeche">Leche</option>
+            </select>
+
+            <label class="fs-4" for="product">Tipo de Sopa:</label>
+            <select id="soup" class="fs-4 form-select mb-3" disabled>
+            <option class="fs-4" value="soup">Sopa de Costilla</option>
+            <option class="fs-4" value="soup">Sopa de Mondongo</option>
+            <option class="fs-4" value="soup">Mote de Queso</option>
+            </select>
+    
+            <label class="fs-4" for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" class="fs-4 form-control mb-3" min="1" value="1">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="fs-4 btn-modal " data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="fs-4 btn-modal " id="addToCart" data-bs-dismiss="modal">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `
+});
+
+
+const modal_content3 = body.menu.map(modal=>{
+    return `
+    
+    <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-2" id="exampleModalLabel">Pedido</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <h3 class="fs-3">Selecciona el producto y personaliza tu pedido:</h3>
+    
+            <label class="fs-4" for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" class="fs-4 form-control mb-3" min="1" value="1">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="fs-4 btn-modal " data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="fs-4 btn-modal " id="addToCart" data-bs-dismiss="modal">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `
+});
+
+const modal_content4 = body.menu.map(modal=>{
+    return `
+    
+    <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-2" id="exampleModalLabel">Pedido</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <h3 class="fs-3">Selecciona el producto y personaliza tu pedido:</h3>
+            <label class="fs-4" for="preparation">Tipo de Preparacion:</label>
+            <select id="juice" class="fs-4 form-select mb-3">
+              <option class="fs-4" value="jugoAgua">Agua</option>
+              <option class="fs-4" value="jugoLeche">Leche</option>
+            </select>
+            <label class="fs-4" for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" class="fs-4 form-control mb-3" min="1" value="1">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="fs-4 btn-modal " data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="fs-4 btn-modal " id="addToCart" data-bs-dismiss="modal">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `
+});
+document.querySelector('#modal_window').innerHTML = modal_content.join('')+modal_content3.join('')+modal_content4.join('');
 
 
 /*Contact*/
