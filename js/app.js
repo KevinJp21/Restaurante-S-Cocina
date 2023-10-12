@@ -26,24 +26,5 @@ document.addEventListener('DOMContentLoaded', function () {
         soup.disabled = false;
       }
     });
-
-      // Agregar un evento al botón "Cerrar" para restablecer los campos
-  var closeButton = document.getElementById('addToCart');
-  closeButton.addEventListener('click', function () {
-    // Aquí puedes restablecer los valores de los campos según tus necesidades
-    // Por ejemplo, borrar el valor de los campos de entrada de texto
-    var soda = document.getElementById('soda');
-    var juice = document.getElementById('juice');
-    var soup = document.getElementById('soup');
-    var type_juice = document.getElementById('type_juice');
-
-    soda.value = '';  // Restablecer el valor de 'soda' a una cadena vacía
-    juice.value = ''; // Restablecer el valor de 'juice' a una cadena vacía
-    soup.value = '';  // Restablecer el valor de 'soup' a una cadena vacía
-    type_juice.value = ''; // Restablecer el valor de 'type_juice' a una cadena vacía
   });
-
-  });
-
-
 
